@@ -1,0 +1,6 @@
+@import "../../../styles/variables/variables";
+@import "../../../styles/mixins/mixins";
+.button {
+  @include button-state;
+  background: $main-blue;
+}
