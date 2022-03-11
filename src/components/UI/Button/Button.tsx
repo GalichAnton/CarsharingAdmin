@@ -10,7 +10,8 @@ interface IButtonProps {
   type: "button" | "submit" | "reset" | undefined;
 }
 const Button: FC<IButtonProps> = (props) => {
-  const { title, onClick, className, background, disabled, type } = props;
+  const { title, onClick, className, background, disabled, type, children } =
+    props;
   return (
     <button
       type={type}
@@ -19,7 +20,7 @@ const Button: FC<IButtonProps> = (props) => {
       className={cn(classes.button, className)}
       style={{ background: `${background}` }}
     >
-      {title}
+      {children} {title}
     </button>
   );
 };

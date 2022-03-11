@@ -4,6 +4,7 @@ import { IOrder } from "../../../interfaces/OrderInterface";
 import { dateParser } from "../../../utils/DateParser";
 import CheckBoxGroup from "../../UI/Inputs/CheckBoxGroup/CheckBoxGroup";
 import { ICheckbox } from "../../UI/Inputs/CheckBoxGroup/CheckBoxInterface";
+import ButtonsBox from "./ButtonBox/ButtonsBox";
 interface IOrderItemProps {
   order: IOrder;
 }
@@ -54,6 +55,8 @@ const OrderItem: FC<IOrderItemProps> = ({ order }) => {
           </div>
         </div>
         <CheckBoxGroup checkboxes={checkboxes} />
+        <div className={classes.price}>{order.price} ₽</div>
+        <ButtonsBox />
       </div>
     </div>
   );
