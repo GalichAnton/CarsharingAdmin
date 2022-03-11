@@ -5,6 +5,7 @@ module.exports = {
   devtool: "cheap-module-source-map",
   target: "web",
   devServer: {
+    historyApiFallback: true,
     hot: true,
     open: true,
   },
