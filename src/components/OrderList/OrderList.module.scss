@@ -6,13 +6,11 @@
   flex-direction: column;
   padding: 30px;
   position: relative;
-  @media screen and (min-width: 1024px) and (max-width: 1280px) {
+  @media screen  and (max-width: 1024px) {
     padding: 15px;
   }
-  @media screen and (min-width: 0px) and (max-width: 1024px) {
-    padding: 10px;
-  }
 }
+
 .title{
   font-size: 29px;
   line-height: 33px;
@@ -20,6 +18,7 @@
   margin: 0 0 28px 0;
   font-weight: 400;
 }
+
 .orderContainer{
   box-sizing: border-box;
   display: flex;
@@ -31,17 +30,16 @@
   border-radius: 9px;
   background: #ffffff;
   overflow: visible;
-  padding: 25px 22px 0;
   @media screen and (min-width: 0px) and (max-width: 549px) {
     padding: 5px 0 10px;
     min-height: fit-content;
   }
-
   @media screen and (min-width: 550px) and (max-width: 767px) {
     padding: 5px 0 10px;
     min-height: fit-content;
   }
 }
+
 .paginationBar {
   width: 100%;
   border-top: 1px solid $main-light-grey;

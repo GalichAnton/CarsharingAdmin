@@ -30,14 +30,14 @@ const FilterBar = () => {
           valueState={""}
         />
       </div>
-      <div className={classes.formButtonContainer}>
+      <div className={classes.buttonContainer}>
         <Button
           type={"button"}
           title="Reset"
           onClick={() => {
             console.log("click");
           }}
-          className={classes.formButtonRed}
+          className={classes.buttonRed}
         />
         <Button
           type={"button"}
@@ -45,7 +45,7 @@ const FilterBar = () => {
           onClick={() => {
             console.log("click");
           }}
-          className={cn(classes.formButton)}
+          className={cn(classes.button)}
         />
       </div>
     </div>

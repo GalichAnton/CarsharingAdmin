@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto 15px;
+  padding: 0 22px;
   width: 100%;
   min-height: fit-content;
   border-radius: 6px;
@@ -22,6 +23,10 @@
   font-size: 13px;
   line-height: 15px;
   color : #889098;
+  @media screen  and (max-width: 768px) {
+    font-size: 11px;
+    line-height: 13px;
+  }
 }
 .descrItem{
   margin-bottom: 6px;
@@ -37,10 +42,14 @@
   display: grid;
   grid-template-columns: repeat(5,1fr);
   align-items: center;
-  @media screen  and (max-width: 768px) {
-    grid-template-columns: repeat(2,1fr);
+  @media screen  and (max-width: 1024px) {
+    grid-template-columns: repeat(3,1fr);
     gap:10px
   }
+    @media screen  and (max-width: 768px) {
+      grid-template-columns: repeat(2,1fr);
+      gap:5px
+    }
 }
 
 .imgBox{
@@ -65,4 +74,14 @@
   font-size: 24px;
   line-height: 28px;
   color: $main-black;
+  @media screen  and (max-width: 768px) {
+    font-size: 20px;
+    line-height: 22px;
+  }
+}
+
+.checkBox{
+  @media screen  and (max-width: 768px) {
+   display: none;
+  }
 }

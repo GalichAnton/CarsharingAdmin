@@ -54,7 +54,10 @@ const OrderItem: FC<IOrderItemProps> = ({ order }) => {
             Цвет : <span className={classes.strong}>{order.color}</span>
           </div>
         </div>
-        <CheckBoxGroup checkboxes={checkboxes} />
+        <div className={classes.checkBox}>
+          <CheckBoxGroup checkboxes={checkboxes} />
+        </div>
+
         <div className={classes.price}>{order.price} ₽</div>
         <ButtonsBox />
       </div>

@@ -20,7 +20,7 @@ const Button: FC<IButtonProps> = (props) => {
       className={cn(classes.button, className)}
       style={{ background: `${background}` }}
     >
-      {children} {title}
+      {children} <span>{title}</span>
     </button>
   );
 };
