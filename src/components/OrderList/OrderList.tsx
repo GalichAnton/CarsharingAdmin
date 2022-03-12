@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import classes from "./OrderList.module.scss";
 import OrderItem from "./OrderItem/OrderItem";
-import { order } from "./OrderItem/constants/OrderExample";
+import { orders } from "./OrderItem/constants/OrderExample";
 import Pagination from "../Pagination/Pagination";
+import FilterBar from "../FilterBar/FilterBar";
 const OrderList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const changePage = (page: number) => {
@@ -12,7 +13,13 @@ const OrderList = () => {
     <section className={classes.orderList}>
       <h2 className={classes.title}>Заказы</h2>
       <div className={classes.orderContainer}>
-        <OrderItem order={order} />
+        <div className={classes.filtersContainer}>
+          <FilterBar />
+        </div>
+
+        {orders.map((order, i) => (
+          <OrderItem key={i} order={order} />
+        ))}
 
         <Pagination
           className={classes.paginationBar}

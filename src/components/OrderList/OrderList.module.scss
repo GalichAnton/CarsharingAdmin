@@ -21,6 +21,7 @@
   font-weight: 400;
 }
 .orderContainer{
+  box-sizing: border-box;
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -30,7 +31,7 @@
   border-radius: 9px;
   background: #ffffff;
   overflow: visible;
-  padding: 25px 0 0;
+  padding: 25px 22px 0;
   @media screen and (min-width: 0px) and (max-width: 549px) {
     padding: 5px 0 10px;
     min-height: fit-content;
@@ -52,4 +53,10 @@
   @media screen and (min-width: 0) and (max-width: 767px) {
     min-width: calc(100% - 20px);
   }
+}
+
+.filtersContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

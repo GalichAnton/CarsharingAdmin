@@ -1,0 +1,88 @@
+@import "../../styles/variables/variables";
+@import "../../styles/mixins/mixins";
+.filterBar {
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+  margin: 0 auto 15px;
+  width: 100%;
+}
+
+.filterContainer {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  @media screen and (min-width: 0px) and (max-width: 549px) {
+    justify-content: center;
+
+  }
+  @media screen and (min-width: 550px) and (max-width: 767px) {
+    justify-content: space-between;
+  }
+}
+
+.formButtonContainer {
+  display: flex;
+  flex-direction: row;
+  @media screen and (min-width: 0) and (max-width: 549px) {
+    margin-left: auto;
+  }
+}
+.formButton {
+  @include hover-opacity;
+  color: white;
+  font-size: 11px;
+  line-height: 13px;
+  min-width: 95px;
+  background: $main-blue;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 9px 15px;
+
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    min-width: 95px;
+    font-size: 12px;
+    line-height: 14px;
+  }
+  @media screen and (min-width: 0) and (max-width: 767px) {
+    margin: 0 5px 0 0;
+    min-width: 95px;
+    font-size: 10px;
+    line-height: 12px;
+    display: none;
+  }
+}
+
+.formButtonRed {
+  @extend .formButton;
+  margin: 0 10px 0 0;
+  background: #C4183C;
+}
+
+.formButtonImage {
+  display: none;
+  @media screen and (min-width: 0) and (max-width: 767px) {
+    display: block;
+    background: inherit;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+
+  }
+
+}
+
+.formButtonDisabled {
+  @extend .formButton;
+  background: $main-dark-grey;
+  color: white;
+}
+
+.formButtonImageDisabled {
+  @extend .formButtonImage;
+  @media screen and (min-width: 0) and (max-width: 767px) {
+    opacity: 0.5;
+  }
+}

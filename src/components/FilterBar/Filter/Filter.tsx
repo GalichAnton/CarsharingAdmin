@@ -2,12 +2,14 @@ import React, { FC } from "react";
 import Select, { createFilter } from "react-select";
 import classes from "./Filter.module.scss";
 import { IOption } from "../../../interfaces/OptionInterface";
+import { DropdownIndicator } from "./DropDown";
 interface IFilterProps {
   onChange: () => void;
   valueState: any;
   placeholder: string;
   name: string;
   items: any;
+  optionKey: string;
 }
 const filterConfig: any = {
   ignoreCase: true,
@@ -24,11 +26,12 @@ const getOptionsByKey =
   });
 
 const Filter: FC<IFilterProps> = (props) => {
-  const { onChange, valueState, placeholder, name, items } = props;
-  const options = items.map(getOptionsByKey(name));
+  const { onChange, valueState, placeholder, name, items, optionKey } = props;
+  const options = items.map(getOptionsByKey(optionKey));
   return (
     <div className={classes.inputContainer}>
       <Select
+        components={{ DropdownIndicator }}
         className={classes.input}
         classNamePrefix={classes.input}
         name={name}

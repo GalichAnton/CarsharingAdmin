@@ -24,7 +24,10 @@
   min-width: 120px;
   max-width: 120px;
 
-  // cursor: pointer;
+  [class*="-indicatorSeparator" ]{
+    display: none;
+  }
+
   @media screen and (min-width: 1441px) {
     min-width: 150px;
     max-width: 150px;
@@ -105,7 +108,7 @@
     padding: 0;
   }
   [class*="-indicatorContainer"] {
-    padding: 3px;
+    padding: 7px;
   }
   [class*="-ValueContainer"] {
     @media screen and (min-width: 0px) and (max-width: 549px) {

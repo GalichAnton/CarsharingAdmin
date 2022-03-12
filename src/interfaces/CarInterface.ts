@@ -10,6 +10,8 @@ interface ICategoryId {
   id: string;
 }
 export interface ICar {
+  updatedAt: number;
+  createdAt: number;
   description: string;
   priceMin: number;
   priceMax: number;
