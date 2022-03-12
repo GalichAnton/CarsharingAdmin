@@ -12,8 +12,8 @@ interface INavBarProps {
 const NavBar: FC<INavBarProps> = ({ navItems }) => {
   const dispatch = useDispatch();
   return (
-    <div className={classes.adminNavbarContainer}>
-      <div className={classes.adminNavbarLogo}>
+    <div className={classes.navbarContainer}>
+      <div className={classes.navbarLogo}>
         <div className={classes.logoBox}>
           <div className={classes.logoImage}>{Logo}</div>
         </div>
@@ -28,11 +28,13 @@ const NavBar: FC<INavBarProps> = ({ navItems }) => {
         </button>
       </div>
 
-      <nav className={classes.adminNavbar}>
+      <nav className={classes.navbar}>
         {navItems.map((item) => (
           <NavLink
             key={item.title}
-            className={classes.linkContainer}
+            className={({ isActive }) =>
+              isActive ? classes.linkContainer_active : classes.linkContainer
+            }
             to={item.route}
           >
             <div className={classes.linkImage}>{item.image}</div>

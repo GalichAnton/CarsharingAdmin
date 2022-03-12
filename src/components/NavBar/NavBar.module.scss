@@ -1,12 +1,12 @@
 @import "../../styles/variables/variables";
 @import '../../styles/mixins/mixins';
 
-.adminNavbar {
+.navbar {
   display: flex;
   flex-direction: column;
 }
 
-.adminNavbarContainer {
+.navbarContainer {
   display: flex;
   position: relative;
   flex-direction: column;
@@ -49,7 +49,7 @@
   display: none;
 }
 
-.adminNavbarLogo {
+.navbarLogo {
   display: flex;
   flex-direction: row;
   padding: 23px 0 23px 49px;
@@ -90,19 +90,20 @@
   transition: $transition;
   display: flex;
   flex-direction: row;
-  padding: 21px;
+  padding: 21px 26px;
   text-decoration: none;
   color: $main-dark-blue;
   border-top: 1px solid #cacedb;
+
   &:hover {
     color: $main-blue;
+    background: #FBFBFB;
   }
 
   &:hover path {
     transition: $transition;
     fill: $main-blue;
   }
-
   &:last-of-type {
     border-bottom: 1px solid #cacedb;
   }
@@ -110,7 +111,14 @@
   @media screen and (min-width: 1024px) and (max-width: 1439px) {
     padding: 18px;
   }
+  &_active{
+    @extend .linkContainer;
+    color: $main-blue;
+    background: #FBFBFB;
+  }
 }
+
+
 
 .linkImage {
   width: 14.5px;

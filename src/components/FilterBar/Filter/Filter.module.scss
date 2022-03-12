@@ -1,0 +1,128 @@
+@import "../../../styles/variables/variables";
+.inputContainer {
+  margin-right: 10px;
+  @media screen and (min-width: 0px) and (max-width: 320px) {
+    margin-right: 5px;
+  }
+}
+
+.inputLabel {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  color: inherit;
+}
+
+.input {
+  color: $main-black;
+  outline-color: $main-blue;
+  align-self: center;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+
+  min-width: 120px;
+  max-width: 120px;
+
+  // cursor: pointer;
+  @media screen and (min-width: 1441px) {
+    min-width: 150px;
+    max-width: 150px;
+  }
+  @media screen and (min-width: 0px) and (max-width: 549px) {
+    font-size: 10px;
+    line-height: 12px;
+    min-width: 80px;
+    max-width: 80px;
+  }
+
+  @media screen and (min-width: 550px) and (max-width: 767px) {
+    font-size: 10px;
+    line-height: 12px;
+    min-width: 105px;
+    max-width: 105px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    font-size: 12px;
+    line-height: 14px;
+  }
+  [class*="-control"] {
+    cursor: pointer;
+    outline: none;
+    box-shadow: none;
+    &:hover {
+      border-color: gray;
+    }
+    @media screen and (min-width: 1024px) and (max-width: 1280px) {
+      min-height: 28px;
+    }
+    @media screen and (min-width: 550px) and (max-width: 767px) {
+      width: 105px;
+    }
+    @media screen and (min-width: 0px) and (max-width: 549px) {
+      width: 80px;
+    }
+  }
+  [class*="-option"] {
+    color: gray;
+    padding: 8px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 16px;
+
+    @media screen and (min-width: 0px) and (max-width: 549px) {
+      min-width: 75px;
+      max-width: 75px;
+      font-size: 10px;
+      line-height: 12px;
+    }
+    @media screen and (min-width: 550px) and (max-width: 767px) {
+      min-width: 105px;
+      max-width: 105px;
+      font-size: 10px;
+      line-height: 12px;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+      font-size: 12px;
+      line-height: 14px;
+    }
+
+    @media screen and (min-width: 1024px) and (max-width: 1279px) {
+      font-size: 12px;
+      line-height: 14px;
+    }
+    &:hover {
+      color: $main-blue;
+    }
+    &:active {
+      background-color: white;
+      opacity: 1;
+    }
+  }
+  [class*="-Input"] {
+    margin: 0;
+    padding: 0;
+  }
+  [class*="-indicatorContainer"] {
+    padding: 3px;
+  }
+  [class*="-ValueContainer"] {
+    @media screen and (min-width: 0px) and (max-width: 549px) {
+      padding: 2px 3px;
+    }
+    @media screen and (min-width: 550px) and (max-width: 767px) {
+      padding: 2px 3px;
+    }
+  }
+  [class*="-menu"] {
+    @media screen and (min-width: 0px) and (max-width: 549px) {
+      min-width: 80px;
+      max-width: 80px;
+    }
+    @media screen and (min-width: 550px) and (max-width: 767px) {
+      min-width: 105px;
+      max-width: 105px;
+    }
+  }
+}
