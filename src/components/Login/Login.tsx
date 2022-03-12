@@ -1,28 +1,37 @@
-import React, { MouseEvent } from "react";
+import React, { MouseEvent, useEffect } from "react";
 import classes from "./Login.module.scss";
 import Button from "../UI/Button/Button";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import LoginValidation from "../../validation/LoginValidation";
 import { Logo } from "./Logo";
 import { Input } from "../UI/Inputs/Input";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../store/slices/AuthSlice";
+import { useAppSelector } from "../../hooks/redux/redux-hooks";
 import { useNavigate } from "react-router-dom";
 export interface FormValues {
   username: string;
   password: string;
 }
 const Login = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const status = useAppSelector((state) => state.auth.status);
   const {
     register,
+    handleSubmit,
     formState: { errors, isValid },
   } = useForm<FormValues>({
     resolver: yupResolver(LoginValidation),
     mode: "onSubmit",
   });
-  const handleClick = (e: MouseEvent) => {
-    e.preventDefault();
-    navigate("/admin/orderlist");
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+    if (status === "success" && token) navigate("/admin/orderlist");
+  }, [status]);
+  const onSubmit: SubmitHandler<FormValues> = ({ username, password }) => {
+    dispatch(authActions.loginStart({ username, password }));
   };
   return (
     <section className={classes.login}>
@@ -31,7 +40,7 @@ const Login = () => {
           <div className={classes.logo}>{Logo}</div>
           <h2 className={classes.title}>Need for drive</h2>
         </div>
-        <form className={classes.loginForm}>
+        <form onSubmit={handleSubmit(onSubmit)} className={classes.loginForm}>
           <h3 className={classes.formHeader}>Вход</h3>
           <div className={classes.inputContainer}>
             <Input
@@ -65,8 +74,7 @@ const Login = () => {
             <Button
               title="Войти"
               className={classes.loginButton}
-              type="button"
-              onClick={(e) => handleClick(e)}
+              type="submit"
             />
           </div>
         </form>

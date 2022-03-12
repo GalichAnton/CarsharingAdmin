@@ -16,6 +16,10 @@ interface IProps extends InputHTMLAttributes<HTMLInputElement> {
 export const Input: FC<IProps> = (props) => {
   const { name, value, label, type, register, errors } = props;
   const { ref, ...inputProps } = register(name);
+  const getError = () => {
+    if (name === "username" && errors.username) return errors.username.message;
+    if (name === "password" && errors.password) return errors.password.message;
+  };
   return (
     <div className={classes.container}>
       <label className={classes.label} htmlFor={name}>
@@ -32,7 +36,7 @@ export const Input: FC<IProps> = (props) => {
         })}
         value={value}
       />
-      <span className={classes.errorMessage}>{errors[name]}</span>
+      <span className={classes.errorMessage}>{getError()}</span>
     </div>
   );
 };

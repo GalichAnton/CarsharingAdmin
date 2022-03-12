@@ -12,6 +12,9 @@ const CheckBoxButton: FC<ICheckBoxButtonProps> = ({ checkbox }) => {
         className={classes.checkbox}
         name={checkbox.title}
         checked={checkbox.isChecked}
+        onChange={() => {
+          null;
+        }}
       />
       <label
         key={checkbox.title}
