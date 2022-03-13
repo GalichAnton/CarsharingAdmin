@@ -98,3 +98,10 @@
   @extend .loginButton;
   color: $main-blue;
 }
+
+.errorMessage {
+  padding: 0 7px 0;
+  color: #c4183c;
+  font-size: 14px;
+  line-height: 13px;
+}

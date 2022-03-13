@@ -18,6 +18,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const status = useAppSelector((state) => state.auth.status);
+  const authError = useAppSelector((state) => state.auth.error);
   const {
     register,
     handleSubmit,
@@ -64,6 +65,9 @@ const Login = () => {
               isValid={isValid}
             />
           </div>
+          {authError && (
+            <span className={classes.errorMessage}>{authError}</span>
+          )}
           <div className={classes.buttonContainer}>
             <Button
               title="Запросить доступ"

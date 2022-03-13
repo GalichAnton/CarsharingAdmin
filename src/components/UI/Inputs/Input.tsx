@@ -3,6 +3,8 @@ import classes from "./Input.module.scss";
 import cn from "classnames";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 import { FormValues } from "../../Login/Login";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../../store/slices/AuthSlice";
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   name: "username" | "password";
   value?: string;
@@ -16,6 +18,7 @@ interface IProps extends InputHTMLAttributes<HTMLInputElement> {
 export const Input: FC<IProps> = (props) => {
   const { name, value, label, type, register, errors } = props;
   const { ref, ...inputProps } = register(name);
+  const dispatch = useDispatch();
   const getError = () => {
     if (name === "username" && errors.username) return errors.username.message;
     if (name === "password" && errors.password) return errors.password.message;
@@ -35,6 +38,7 @@ export const Input: FC<IProps> = (props) => {
           [classes.inputError]: false,
         })}
         value={value}
+        onFocus={() => dispatch(authActions.setError(""))}
       />
       <span className={classes.errorMessage}>{getError()}</span>
     </div>

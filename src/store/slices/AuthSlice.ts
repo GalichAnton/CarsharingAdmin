@@ -4,11 +4,13 @@ import { IUser } from "../../interfaces/UserInterfaces";
 export interface IAuthState {
   status: "idle" | "loading" | "success" | "rejected";
   user: IUser;
+  error: string;
 }
 
 const initialState: IAuthState = {
   status: "idle",
   user: {} as IUser,
+  error: "",
 };
 
 export interface IAuth {
@@ -28,6 +30,9 @@ const authSlice = createSlice({
     },
     logOut(state) {
       state = initialState;
+    },
+    setError(state, action: PayloadAction<string>) {
+      state.error = action.payload;
     },
   },
 });
