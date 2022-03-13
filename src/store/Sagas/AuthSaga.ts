@@ -2,7 +2,9 @@ import { call, takeEvery, put } from "redux-saga/effects";
 import AuthService from "../../api/Services/AuthService";
 import { IUserResponse } from "../../interfaces/UserInterfaces";
 import { authActions } from "../slices/AuthSlice";
-export function* login({ payload }: ReturnType<typeof authActions.loginStart>) {
+export function* loginSaga({
+  payload,
+}: ReturnType<typeof authActions.loginStart>) {
   try {
     const { data }: IUserResponse = yield call(
       AuthService.login,
@@ -16,6 +18,6 @@ export function* login({ payload }: ReturnType<typeof authActions.loginStart>) {
   }
 }
 
-export function* loginSaga() {
-  yield takeEvery(authActions.loginStart.type, login);
+export function* loginSagaWatcher() {
+  yield takeEvery(authActions.loginStart.type, loginSaga);
 }

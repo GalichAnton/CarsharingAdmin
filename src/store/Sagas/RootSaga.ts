@@ -1,6 +1,6 @@
-import { loginSaga } from "./AuthSaga";
+import { loginSagaWatcher } from "./AuthSaga";
 import { all, spawn } from "redux-saga/effects";
 export default function* rootSaga() {
-  const sagas = [loginSaga];
+  const sagas = [loginSagaWatcher];
   yield all(sagas.map((s) => spawn(s)));
 }
