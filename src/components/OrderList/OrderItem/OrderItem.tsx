@@ -3,32 +3,12 @@ import classes from "./OrderItem.module.scss";
 import { IOrder } from "../../../interfaces/OrderInterface";
 import { dateParser } from "../../../utils/DateParser";
 import CheckBoxGroup from "../../UI/Inputs/CheckBoxGroup/CheckBoxGroup";
-import { ICheckbox } from "../../UI/Inputs/CheckBoxGroup/CheckBoxInterface";
 import ButtonsBox from "./ButtonBox/ButtonsBox";
+import { setCheckboxes } from "./setCheckboxes";
 interface IOrderItemProps {
   order: IOrder;
 }
 const OrderItem: FC<IOrderItemProps> = ({ order }) => {
-  const checkboxes: ICheckbox[] = [
-    {
-      title: "Полный бак",
-      value: "Полный бак",
-      id: 1,
-      isChecked: order.isFullTank,
-    },
-    {
-      title: "Детское кресло",
-      value: "Детское кресло",
-      id: 3,
-      isChecked: order.isNeedChildChair,
-    },
-    {
-      title: "Правый руль",
-      value: "Правый руль",
-      id: 2,
-      isChecked: order.isRightWheel,
-    },
-  ];
   return (
     <div className={classes.order}>
       <div className={classes.info}>
@@ -55,10 +35,10 @@ const OrderItem: FC<IOrderItemProps> = ({ order }) => {
           </div>
         </div>
         <div className={classes.checkBox}>
-          <CheckBoxGroup checkboxes={checkboxes} />
+          <CheckBoxGroup checkboxes={setCheckboxes(order)} />
         </div>
 
-        <div className={classes.price}>{order.price} ₽</div>
+        <div className={classes.price}>{order.price.toLocaleString()} ₽</div>
         <ButtonsBox />
       </div>
     </div>
