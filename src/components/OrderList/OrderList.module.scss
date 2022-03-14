@@ -1,0 +1,60 @@
+@import "../../styles/variables/variables";
+.orderList{
+  flex-grow: 1;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  position: relative;
+  @media screen  and (max-width: 1024px) {
+    padding: 15px;
+  }
+}
+
+.title{
+  font-size: 29px;
+  line-height: 33px;
+  color: $main-dark-blue;
+  margin: 0 0 28px 0;
+  font-weight: 400;
+}
+
+.orderContainer{
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  min-height: fit-content;
+  box-shadow: 0 1px 0 rgba(90, 97, 105, 0.11), 0 2px 4px rgba(90, 97, 105, 0.12),
+  0 5px 5px rgba(90, 97, 105, 0.06), 0 3.5px 35px rgba(90, 97, 105, 0.1);
+  border-radius: 9px;
+  background: #ffffff;
+  overflow: visible;
+  @media screen and (min-width: 0px) and (max-width: 549px) {
+    padding: 5px 0 10px;
+    min-height: fit-content;
+  }
+  @media screen and (min-width: 550px) and (max-width: 767px) {
+    padding: 5px 0 10px;
+    min-height: fit-content;
+  }
+}
+
+.paginationBar {
+  width: 100%;
+  border-top: 1px solid $main-light-grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 21px 0;
+  margin: 15px auto 0;
+  @media screen and (min-width: 0) and (max-width: 767px) {
+    min-width: calc(100% - 20px);
+  }
+}
+
+.filtersContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

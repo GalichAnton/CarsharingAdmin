@@ -1,0 +1,33 @@
+@import "../../styles/mixins/mixins";
+
+.wrapper{
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.sideBar {
+  transition: $transition;
+  @media screen and (min-width: 0) and (max-width: 1023px) {
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 2;
+  }
+}
+
+.sideBar_active{
+  visibility: visible;
+  opacity: 1;
+}
