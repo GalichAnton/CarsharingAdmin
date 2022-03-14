@@ -3,7 +3,7 @@ import { IData } from "../../interfaces/DataInterface";
 
 export interface IDataState extends IData {
   status: "idle" | "loading" | "success" | "rejected";
-  error: string;
+  error: any;
 }
 
 const initialState: IDataState = {
@@ -31,8 +31,12 @@ const dataSlice = createSlice({
       state.rates.data = action.payload.rates.data;
       state.category.data = action.payload.category.data;
     },
-    setError(state, action: PayloadAction<string>) {
+    setError(state, action: PayloadAction<any>) {
       state.error = action.payload;
+      state.status = "idle";
+    },
+    removeError(state) {
+      state.error = initialState.error;
     },
   },
 });

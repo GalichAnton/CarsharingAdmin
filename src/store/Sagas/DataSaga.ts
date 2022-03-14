@@ -21,7 +21,7 @@ export function* setData() {
     };
     yield put({ type: dataActions.dataFetched.type, payload: data });
   } catch (e: any) {
-    yield put({ type: dataActions.setError.type, payload: e.message });
+    yield put({ type: dataActions.setError.type, payload: e });
   }
 }
 
