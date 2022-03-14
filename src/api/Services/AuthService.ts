@@ -13,11 +13,4 @@ export default class AuthService {
       password,
     });
   }
-
-  static async register(username: string, password: string) {
-    return api.post(ApiPaths.register, {
-      username,
-      password,
-    });
-  }
 }
