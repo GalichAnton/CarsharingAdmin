@@ -1,0 +1,55 @@
+@import "../../styles/variables/variables";
+@import "../../styles/mixins/mixins";
+.filterBar {
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+  margin: 0 auto 15px;
+  width: 100%;
+  border-bottom: 1px solid $main-light-grey;
+  padding: 15px 22px;
+  @media screen  and (max-width: 768px) {
+    padding: 10px 15px;
+  }
+}
+
+.filterContainer {
+  display: flex;
+  align-self: center;
+}
+
+.buttonContainer {
+  display: flex;
+}
+.button {
+  @include hover-opacity;
+  box-sizing: border-box;
+  color: white;
+  font-size: 11px;
+  line-height: 13px;
+  width: 95px;
+  background: $main-blue;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 9px 15px;
+
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    width: 75px;
+  }
+  @media screen and (min-width: 0) and (max-width: 767px) {
+    width: 45px;
+    padding: 5px 10px;
+    line-height: 11px;
+  }
+}
+
+.buttonRed {
+  @extend .button;
+  margin: 0 10px 0 0;
+  background: #C4183C;
+}
+
+
+
+

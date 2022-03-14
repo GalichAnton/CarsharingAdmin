@@ -1,0 +1,65 @@
+.buttonBox{
+  display: flex;
+  border: 1px solid #becad6;
+  width: min-content;
+  border-radius: 4px;
+  justify-self: flex-end;
+}
+
+.button {
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  border-right: 1px solid #becad6;
+  color: #5A6169;
+  padding: 8px;
+  min-width: 72px;
+  max-width: 72px;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  margin: 0;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media screen  and (max-width: 425px) {
+    min-width: 50px;
+    max-width: 50px;
+  }
+  span{
+    @media screen  and (max-width: 425px) {
+      display: none;
+      min-width: 50px;
+      max-width: 50px;
+    }
+  }
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.orderButtonText {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  margin: 0;
+  align-self: center;
+
+  @media screen and (min-width: 600px) and (max-width: 1279px) {
+    display: none;
+  }
+  @media screen and (min-width: 0) and (max-width: 649px) {
+    font-size: 10px;
+    line-height: 12px;
+    display: block;
+  }
+}
+
+
+.orderButtonImage {
+  margin: 0 4px 0 0;
+  align-self: center;
+  width: min-content;
+  height: min-content;
+}
