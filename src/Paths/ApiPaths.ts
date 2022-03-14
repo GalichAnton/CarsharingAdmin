@@ -4,6 +4,6 @@ export enum ApiPaths {
   order = "/db/order",
   cars = "/db/car",
   cities = "db/city",
-  rate = "/db/rateType",
+  rate = "/db/rate",
   category = "/db/category",
 }

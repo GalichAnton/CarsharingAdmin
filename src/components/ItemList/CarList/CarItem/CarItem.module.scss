@@ -1,5 +1,5 @@
-@import "../../styles/variables/variables";
-@import "../../styles/mixins/mixins";
+@import "../../../../styles/variables/variables";
+@import "../../../../styles/mixins/mixins";
 .car {
   box-sizing: border-box;
   justify-content: flex-start;
@@ -85,6 +85,7 @@
 }
 
 .descrItem {
+  @include font-adapt;
   font-weight: 300;
   color: $main-dark-blue;
 }
@@ -96,8 +97,8 @@
   background: none;
   color: #5a6169;
   padding: 8px;
-  min-width: 110px;
-  max-width: 110px;
+  min-width: fit-content;
+  max-width: fit-content;
   font-weight: 400;
   font-size: 14px;
   line-height: 15px;
@@ -108,6 +109,15 @@
   align-items: center;
   border-radius: 8px;
   justify-self: flex-end;
+  @media screen and (max-width: 1024px) {
+    font-size: 12px;
+    line-height: 12px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 10px;
+    line-height: 11px;
+    justify-self: flex-start;
+  }
   @media screen and (max-width: 425px) {
     min-width: 50px;
     max-width: 50px;

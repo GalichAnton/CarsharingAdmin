@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import OrderItem from "../../OrderItem/OrderItem";
+import OrderItem from "./OrderItem/OrderItem";
 import Preloader from "../../UI/Preloader/Preloader";
 import { useDispatch } from "react-redux";
 import Pagination from "../../Pagination/Pagination";

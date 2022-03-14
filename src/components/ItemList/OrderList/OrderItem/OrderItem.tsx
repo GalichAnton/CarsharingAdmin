@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import classes from "./OrderItem.module.scss";
-import { IOrder } from "../../interfaces/OrderInterface";
-import { dateParser } from "../../utils/DateParser";
-import CheckBoxGroup from "../UI/Inputs/CheckBoxGroup/CheckBoxGroup";
+import { IOrder } from "../../../../interfaces/OrderInterface";
+import { dateParser } from "../../../../utils/DateParser";
+import CheckBoxGroup from "../../../UI/Inputs/CheckBoxGroup/CheckBoxGroup";
 import ButtonsBox from "./ButtonBox/ButtonsBox";
 import { setCheckboxes } from "./setCheckboxes";
 interface IOrderItemProps {

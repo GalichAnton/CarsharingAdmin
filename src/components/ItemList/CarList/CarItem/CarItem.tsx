@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import classes from "./CarItem.module.scss";
-import { ICar } from "../../interfaces/CarInterface";
-import Button from "../UI/Button/Button";
-import { ChangeButton } from "../OrderItem/ButtonBox/images/ChangeButton";
+import { ICar } from "../../../../interfaces/CarInterface";
+import Button from "../../../UI/Button/Button";
+import { ChangeButton } from "../../OrderList/OrderItem/ButtonBox/images/ChangeButton";
 interface IOrderItemProps {
   car: ICar;
 }
