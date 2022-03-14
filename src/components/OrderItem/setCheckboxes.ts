@@ -1,5 +1,5 @@
-import { ICheckbox } from "../../UI/Inputs/CheckBoxGroup/CheckBoxInterface";
-import { IOrder } from "../../../interfaces/OrderInterface";
+import { ICheckbox } from "../UI/Inputs/CheckBoxGroup/CheckBoxInterface";
+import { IOrder } from "../../interfaces/OrderInterface";
 
 export const setCheckboxes = (order: IOrder): ICheckbox[] => {
   const checkBoxes = [

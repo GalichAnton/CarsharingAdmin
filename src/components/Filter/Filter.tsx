@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import Select, { createFilter } from "react-select";
 import classes from "./Filter.module.scss";
-import { IOption } from "../../../interfaces/OptionInterface";
+import { IOption } from "../../interfaces/OptionInterface";
 import { DropdownIndicator } from "./DropDown";
 interface IFilterProps {
   onChange: () => void;

@@ -1,5 +1,5 @@
 import React from "react";
-import Filter from "./Filter/Filter";
+import Filter from "../Filter/Filter";
 import Button from "../UI/Button/Button";
 import classes from "./FilterBar.module.scss";
 import cn from "classnames";

@@ -6,7 +6,7 @@ import { IOrderResponse } from "../../interfaces/OrderInterface";
 
 export default class OrderService {
   static async getOrders(
-    params: IParams
+    params?: IParams
   ): Promise<AxiosResponse<IOrderResponse>> {
     return contentApi.get<IOrderResponse>(ApiPaths.order, {
       params,

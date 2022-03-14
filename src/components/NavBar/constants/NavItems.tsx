@@ -9,7 +9,7 @@ export const navItems: INavItem[] = [
   },
   {
     title: "Список авто",
-    route: "/",
+    route: "/admin/carlist",
     image: list,
   },
   {

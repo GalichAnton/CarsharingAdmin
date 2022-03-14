@@ -11,7 +11,7 @@ export const contentApi = axios.create({
 
 contentApi.interceptors.request.use(
   (config: AxiosRequestConfig) => {
-    const token = JSON.parse(localStorage.getItem("user")!);
+    const token = localStorage.getItem("access_token")!;
     if (token) {
       config.headers!["Authorization"] = `Bearer ${token}`;
     }
