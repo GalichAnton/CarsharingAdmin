@@ -8,10 +8,17 @@ import cn from "classnames";
 import SearchLine from "./SearchLine/SearchLine";
 import { useDispatch } from "react-redux";
 import { modalActions } from "../../store/slices/ModalSlice";
+import { authActions } from "../../store/slices/AuthSlice";
+import { useNavigate } from "react-router-dom";
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-
+  const logOut = () => {
+    dispatch(authActions.logOut());
+    localStorage.clear();
+    navigate("/");
+  };
   return (
     <header className={classes.header}>
       <button
@@ -44,7 +51,9 @@ const Header = () => {
           >
             <button className={classes.profileButton}>Профиль</button>
 
-            <button className={classes.profileButton}>Выйти</button>
+            <button onClick={logOut} className={classes.profileButton}>
+              Выйти
+            </button>
           </div>
         </div>
       </div>

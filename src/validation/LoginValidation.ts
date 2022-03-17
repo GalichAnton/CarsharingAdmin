@@ -3,7 +3,7 @@ const regexp = /[a-zA-Z0-9]/;
 const loginValidationSchema = yup.object().shape({
   username: yup
     .string()
-    .required("'Обзательное поле, минимум 3 символа'")
+    .required("Обзательное поле, минимум 3 символа")
     .min(3, "Минимум 3 символа")
     .matches(regexp, "Логин должен использовать латинские буквы и цифры"),
 
