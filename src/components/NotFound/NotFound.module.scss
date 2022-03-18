@@ -1,0 +1,95 @@
+@import "../../styles/variables/variables";
+@import "../../styles/mixins/mixins";
+.error {
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.container {
+  margin: 250px auto auto;
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    margin: 150px auto auto;
+  }
+  @media screen and (min-width: 0) and (max-width: 767px) {
+    margin: 150px auto auto;
+  }
+}
+
+.messageContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 35px;
+}
+
+.status {
+  font-weight: 500;
+  font-size: 75px;
+  line-height: 88px;
+  letter-spacing: -5.76923px;
+  color: #cacedb;
+  margin: 0 auto 13px;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    font-size: 55px;
+    line-height: 68px;
+  }
+  @media screen and (min-width: 0) and (max-width: 767px) {
+    font-size: 55px;
+    line-height: 68px;
+
+  }
+}
+
+.title {
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 57px;
+  text-align: center;
+  letter-spacing: -2.5px;
+  color: $main-dark-blue;
+  margin: 0 auto 15px;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    font-size: 40px;
+    line-height: 47px;
+  }
+  @media screen and (min-width: 0) and (max-width: 767px) {
+    font-size: 30px;
+    line-height: 37px;
+  }
+}
+
+.message {
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  letter-spacing: -0.5px;
+  color: $main-dark-grey;
+  margin: 0 auto 0;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    font-size: 15px;
+    line-height: 18px;
+  }
+  @media screen and (min-width: 0) and (max-width: 767px) {
+    font-size: 12px;
+    line-height: 14px;
+  }
+}
+
+.button {
+  @include hover-opacity;
+  color: white;
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 13px;
+  margin: 0 auto 0;
+  min-width: 95px;
+  background: $main-blue;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 8px 15px;
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../../UI/Button/Button";
+import Button from "../../../../UI/Button/Button";
 import classes from "./ButonsBox.module.scss";
 import { AcceptButton } from "./images/AcceptButton";
 import { CancelButton } from "./images/CancelButton";

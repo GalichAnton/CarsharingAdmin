@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUser } from "../../interfaces/UserInterfaces";
 
 export interface IAuthState {
-  status: "idle" | "loading" | "success" | "rejected";
+  status: "idle" | "loading" | "registered" | "logged";
   user: IUser;
   error: string;
 }
@@ -25,7 +25,14 @@ const authSlice = createSlice({
       state.status = "loading";
     },
     loginEnd(state, action: PayloadAction<IUser>) {
-      state.status = "success";
+      state.status = "logged";
+      state.user = action.payload;
+    },
+    registerStart(state, action: PayloadAction<IAuth>) {
+      state.status = "loading";
+    },
+    registerEnd(state, action: PayloadAction<IUser>) {
+      state.status = "registered";
       state.user = action.payload;
     },
     logOut(state) {

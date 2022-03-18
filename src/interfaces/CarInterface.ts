@@ -4,7 +4,7 @@ interface IThumbnail {
   originalname: string;
   mimetype: string;
 }
-interface ICategoryId {
+export interface ICategory {
   name: string;
   description: string;
   id: string;
@@ -17,7 +17,7 @@ export interface ICar {
   priceMax: number;
   name: string;
   number: string;
-  categoryId: ICategoryId;
+  categoryId: ICategory;
   thumbnail: IThumbnail;
   tank: number;
   colors: string[];
