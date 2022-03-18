@@ -1,5 +1,5 @@
 @import "../../styles/variables/variables";
-.orderList{
+.itemsList{
   flex-grow: 1;
   overflow: auto;
   display: flex;
@@ -19,7 +19,7 @@
   font-weight: 400;
 }
 
-.orderContainer{
+.itemsContainer{
   box-sizing: border-box;
   display: flex;
   width: 100%;
@@ -53,7 +53,7 @@
   }
 }
 
-.filtersContainer{
+.headContainer{
   display: flex;
   justify-content: space-between;
   align-items: center;

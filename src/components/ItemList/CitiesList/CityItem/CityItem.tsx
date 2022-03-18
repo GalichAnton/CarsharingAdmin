@@ -4,10 +4,16 @@ import Button from "../../../UI/Button/Button";
 import { ChangeButton } from "../../OrderList/OrderItem/ButtonBox/images/ChangeButton";
 import { ICity } from "../../../../interfaces/CityInterfaces";
 import { CancelButton } from "../../OrderList/OrderItem/ButtonBox/images/CancelButton";
+import { useDispatch } from "react-redux";
+import { cityActions } from "../../../../store/slices/CitySlice";
 interface IOrderItemProps {
   city: ICity;
 }
 const CityItem: FC<IOrderItemProps> = ({ city }) => {
+  const dispatch = useDispatch();
+  const handleDelete = (cityId: string) => {
+    dispatch(cityActions.startDeleteCity(cityId));
+  };
   return (
     <div className={classes.city}>
       <div className={classes.info}>
@@ -19,14 +25,14 @@ const CityItem: FC<IOrderItemProps> = ({ city }) => {
             </span>
           </li>
         </ul>
-        <div className={classes.buttonBox}>
-          <Button type={"button"} className={classes.button} title={"Изменить"}>
-            <div className={classes.buttonImage}>{ChangeButton}</div>
-          </Button>
-          <Button type={"button"} className={classes.button} title={"Удалить"}>
-            <div className={classes.buttonImage}>{CancelButton}</div>
-          </Button>
-        </div>
+        <Button
+          onClick={() => handleDelete(city.id)}
+          type={"button"}
+          className={classes.button}
+          title={"Удалить"}
+        >
+          <div className={classes.buttonImage}>{CancelButton}</div>
+        </Button>
       </div>
     </div>
   );

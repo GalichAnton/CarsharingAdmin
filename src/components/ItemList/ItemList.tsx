@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import classes from "./ItemList.module.scss";
-import FilterBar from "../FilterBar/FilterBar";
+import OrderFilterBar from "../Filter/OrderFilterBar/OrderFilterBar";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { dataActions } from "../../store/slices/DataSlice";
 import { LocalPaths } from "../../Paths/LocalPaths";
 import { useAppSelector } from "../../hooks/redux/redux-hooks";
+import ListHead from "./ListHead/ListHead";
 
 const ItemList = () => {
   const dispatch = useDispatch();
@@ -25,11 +26,11 @@ const ItemList = () => {
     if (location.pathname === LocalPaths.rates) return "Тарифы";
   };
   return (
-    <section className={classes.orderList}>
+    <section className={classes.itemsList}>
       <h2 className={classes.title}>{setTitle()}</h2>
-      <div className={classes.orderContainer}>
-        <div className={classes.filtersContainer}>
-          <FilterBar />
+      <div className={classes.itemsContainer}>
+        <div className={classes.headContainer}>
+          <ListHead />
         </div>
         <Outlet />
       </div>

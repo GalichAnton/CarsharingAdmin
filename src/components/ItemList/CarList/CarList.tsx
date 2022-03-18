@@ -6,14 +6,14 @@ import Preloader from "../../UI/Preloader/Preloader";
 import Pagination from "../../Pagination/Pagination";
 import classes from "../ItemList.module.scss";
 const mapState = (state: RootState) => ({
-  cars: state.data.cars.data,
-  carsCount: state.data.cars.count,
-  dataStatus: state.data.status,
+  cars: state.car.cars.data,
+  carsCount: state.car.cars.count,
+  carStatus: state.car.status,
 });
 const CarList = () => {
   const limit = 5;
   const [currentPage, setCurrentPage] = useState(1);
-  const { carsCount, cars, dataStatus } = useAppSelector(mapState);
+  const { carsCount, cars, carStatus } = useAppSelector(mapState);
   const showedCars = cars.slice((currentPage - 1) * limit, limit * currentPage);
   const changePage = (page: number) => {
     setCurrentPage(page);
@@ -21,7 +21,7 @@ const CarList = () => {
 
   return (
     <>
-      {dataStatus === "success" ? (
+      {carStatus === "success" ? (
         showedCars.map((car, i) => <CarItem key={i} car={car} />)
       ) : (
         <Preloader customText={"Подождите..."} />

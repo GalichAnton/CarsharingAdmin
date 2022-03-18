@@ -9,6 +9,7 @@ import CarList from "../components/ItemList/CarList/CarList";
 import CitiesList from "../components/ItemList/CitiesList/CitiesList";
 import RateList from "../components/ItemList/RateList/RateList";
 import NotFound from "../components/NotFound/NotFound";
+import CarPage from "../pages/AdminPage/CarPage/CarPage";
 const Router = () => {
   return (
     <HashRouter>
@@ -20,6 +21,10 @@ const Router = () => {
               <Route path="carlist" element={<CarList />} />
               <Route path="citieslist" element={<CitiesList />} />
               <Route path="ratelist" element={<RateList />} />
+              <Route path={"car"}>
+                <Route index element={<CarPage />} />
+                <Route path={":carId"} element={<CarPage />} />
+              </Route>
             </Route>
             <Route path={"error"} element={<NotFound />} />
             <Route path={"*"} element={<NotFound />} />

@@ -77,3 +77,9 @@
     font-size: 12px;
   }
 }
+@mixin input-error{
+  color: #c4183c;
+  font-size: 11px;
+  line-height: 16px;
+  margin-top: 5px;
+}

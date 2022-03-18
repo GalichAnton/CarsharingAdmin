@@ -1,9 +1,18 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IOrder, IOrderResponse } from "../../interfaces/OrderInterface";
+import {
+  IOrder,
+  IOrderResponse,
+  IOrderStatus,
+  IOrderStatusResponse,
+} from "../../interfaces/OrderInterface";
 import { IParams } from "../../interfaces/ParamsInterface";
 
 export interface IOrderState {
   status: "idle" | "loading" | "success" | "rejected";
+  orderStatuses: {
+    data: IOrderStatus[];
+    status: "idle" | "loading" | "success" | "rejected";
+  };
   orders: IOrder[];
   order: IOrder;
   error: string;
@@ -12,6 +21,7 @@ export interface IOrderState {
 
 const initialState: IOrderState = {
   status: "idle",
+  orderStatuses: { data: [], status: "idle" },
   orders: [],
   order: {} as IOrder,
   error: "",
@@ -30,13 +40,16 @@ const orderSlice = createSlice({
       state.orders = action.payload.data;
       state.count = action.payload.count;
     },
-    orderFetching(state, action: PayloadAction<string>) {
+    // =====================
+    orderStatusesFetching(state) {
       state.status = "loading";
     },
-    orderFetched(state, action: PayloadAction<IOrder>) {
-      state.status = "success";
-      state.order = action.payload;
+    orderStatusesFetched(state, action: PayloadAction<IOrderStatusResponse>) {
+      state.orderStatuses.status = "success";
+      state.orderStatuses.data = action.payload.data;
     },
+    // =====================
+
     setError(state, action: PayloadAction<string>) {
       state.error = action.payload;
     },
