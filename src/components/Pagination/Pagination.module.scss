@@ -16,7 +16,8 @@
   line-height: 17px;
   letter-spacing: -0.471429px;
   border-radius: 16px;
-  width: 18px;
+  max-width: min-content;
+  min-width: 18px;
   height: 18px;
   cursor: pointer;
 

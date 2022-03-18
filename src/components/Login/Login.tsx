@@ -1,4 +1,4 @@
-import React, { MouseEvent, useEffect } from "react";
+import React, { MouseEvent, useEffect, useState } from "react";
 import classes from "./Login.module.scss";
 import Button from "../UI/Button/Button";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -17,6 +17,7 @@ export interface FormValues {
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isRegisterForm, setIsRegisterForm] = useState(false);
   const status = useAppSelector((state) => state.auth.status);
   const authError = useAppSelector((state) => state.auth.error);
   const {
@@ -29,10 +30,16 @@ const Login = () => {
   });
   useEffect(() => {
     const token = localStorage.getItem("access_token");
-    if (status === "success" && token) navigate("/admin/orderlist");
+    if (status === "logged" && token) navigate("/admin/orderlist");
+    if (status === "registered") {
+      setIsRegisterForm(false);
+      alert("Теперь вы можете войти");
+    }
   }, [status]);
   const onSubmit: SubmitHandler<FormValues> = ({ username, password }) => {
-    dispatch(authActions.loginStart({ username, password }));
+    if (isRegisterForm)
+      dispatch(authActions.registerStart({ username, password }));
+    else dispatch(authActions.loginStart({ username, password }));
   };
   return (
     <section className={classes.login}>
@@ -70,13 +77,18 @@ const Login = () => {
           )}
           <div className={classes.buttonContainer}>
             <Button
-              title="Запросить доступ"
+              title={
+                isRegisterForm
+                  ? "Уже есть аккаунт?"
+                  : "Хотите зарегистрироваться?"
+              }
               className={classes.registerButton}
               type="button"
               background={"transparent"}
+              onClick={() => setIsRegisterForm((prev) => !prev)}
             />
             <Button
-              title="Войти"
+              title={isRegisterForm ? "Зарегистрироваться" : "Войти"}
               className={classes.loginButton}
               type="submit"
             />

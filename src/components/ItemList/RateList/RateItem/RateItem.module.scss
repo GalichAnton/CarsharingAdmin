@@ -1,0 +1,115 @@
+@import "../../../../styles/variables/variables";
+@import "../../../../styles/mixins/mixins";
+.rate {
+  box-sizing: border-box;
+  box-shadow: 0 1px 0 rgba(90, 97, 105, 0.11), 0 2px 4px rgba(90, 97, 105, 0.12),
+  0 5px 5px rgba(90, 97, 105, 0.06), 0 3.5px 35px rgba(90, 97, 105, 0.1);
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 15px;
+  padding: 15px 22px;
+  width: 95%;
+  min-height: fit-content;
+  border-radius: 6px;
+  @media screen and (min-width: 1024px) and (max-width: 1280px) {
+    margin: 0 auto 7px;
+  }
+}
+
+.descrBlock {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+.strong {
+  color: $main-black;
+  font-weight: 700;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+  }
+}
+
+.imgBox {
+  width: 150px;
+  height: 100px;
+  overflow: hidden;
+  padding: 5px;
+  box-sizing: border-box;
+  @media screen and (max-width: 768px) {
+    width: 110px;
+    height: 70px;
+  }
+}
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.price {
+  font-size: 24px;
+  line-height: 28px;
+  color: $main-black;
+  @media screen and (max-width: 768px) {
+    font-size: 20px;
+    line-height: 22px;
+  }
+}
+
+.descrItem {
+  @include font-adapt;
+  font-weight: 300;
+  color: $main-dark-blue;
+}
+
+.button {
+  @include hover-opacity;
+  border: 1px solid $main-dark-grey;
+  cursor: pointer;
+  background: none;
+  color: #5a6169;
+  padding: 8px;
+  min-width: 110px;
+  max-width: 110px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 15px;
+  margin: 0;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  justify-self: self-end;
+  @media screen and (max-width: 425px) {
+    min-width: 50px;
+    max-width: 50px;
+  }
+  span {
+    @media screen and (max-width: 425px) {
+      display: none;
+    }
+  }
+}
+
+.buttonImage {
+  margin: 0 5px 0 0;
+  align-self: center;
+  width: min-content;
+  height: min-content;
+}

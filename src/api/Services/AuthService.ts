@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import api from "../authApi";
+import authApi from "../authApi";
 import { ApiPaths } from "../../Paths/ApiPaths";
 import { IUserResponse } from "../../interfaces/UserInterfaces";
 
@@ -8,7 +8,13 @@ export default class AuthService {
     username: string,
     password: string
   ): Promise<AxiosResponse<IUserResponse>> {
-    return api.post<IUserResponse>(ApiPaths.auth, {
+    return authApi.post<IUserResponse>(ApiPaths.auth, {
+      username,
+      password,
+    });
+  }
+  static async register(username: string, password: string) {
+    return authApi.post(ApiPaths.register, {
       username,
       password,
     });
