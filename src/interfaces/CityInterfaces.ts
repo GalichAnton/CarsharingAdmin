@@ -4,6 +4,11 @@ export interface ICity {
   name: string;
   id: string;
 }
-export interface ICityResponse {
+export interface ICitiesResponse {
   data: ICity[];
+  count: number;
+}
+
+export interface ICityResponse {
+  data: ICity;
 }

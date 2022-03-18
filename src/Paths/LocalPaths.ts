@@ -4,4 +4,5 @@ export enum LocalPaths {
   cities = "/admin/citieslist",
   rates = "/admin/ratelist",
   error = "/admin/error",
+  car = "/admin/car",
 }

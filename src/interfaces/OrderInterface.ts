@@ -32,5 +32,14 @@ export interface IOrder {
 }
 
 export interface IOrderResponse {
-  data: IOrder;
+  data: IOrder[];
+  count: number;
+}
+export interface IOrderStatus {
+  name: string;
+  id: string;
+}
+
+export interface IOrderStatusResponse {
+  data: IOrderStatus[];
 }
