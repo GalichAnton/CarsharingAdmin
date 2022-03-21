@@ -40,10 +40,10 @@ const carSlice = createSlice({
     },
     // =======================
     startPostCar(state, action: PayloadAction<NewCarType>) {
-      state.status = "loading";
+      state.selectedCar.status = "loading";
     },
     endPostCar(state) {
-      state.status = "success";
+      state.selectedCar.status = "success";
     },
     // =======================
     startGetCarById(state, action: PayloadAction<string>) {
@@ -58,7 +58,7 @@ const carSlice = createSlice({
       state,
       action: PayloadAction<{ carId: string; car: NewCarType }>
     ) {
-      state.status = "loading";
+      state.selectedCar.status = "loading";
     },
     endPutCar(state, action: PayloadAction<ICarResponse>) {
       state.selectedCar.status = "success";
