@@ -35,9 +35,10 @@ const getOptionsByKey =
 const OrderInput: FC<IOrderInputProps> = (props) => {
   const { placeholder, name, items, optionKey, field, id, errors, label } =
     props;
-  const options = items && items.map(getOptionsByKey(optionKey));
+  const dispatch = useDispatch();
+  const points = useAppSelector((state) => state.city.points);
+  let options = items && items.map(getOptionsByKey(optionKey));
 
-  console.log("render");
   const getError = () => {
     if (name === "city" && errors.city) return errors.city.message;
     if (name === "car" && errors.car) return errors.car.message;
@@ -51,7 +52,15 @@ const OrderInput: FC<IOrderInputProps> = (props) => {
     if (name === "rightWheel" && errors.rightWheel)
       return errors.rightWheel.message;
   };
-
+  useEffect(() => {
+    if (name === "city" && field.value) {
+      dispatch(cityActions.startGetPoints(field.value.id));
+      options = points.map((point) => ({
+        name: point.address,
+        id: point.id,
+      }));
+    }
+  }, [name, field.value]);
   return (
     <div className={classes.inputContainer}>
       <label className={classes.inputLabel} htmlFor={name}>

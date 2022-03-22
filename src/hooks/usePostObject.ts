@@ -21,6 +21,7 @@ export const usePostObject = () => {
   };
   const createOrderObject = (data: any) => {
     const object = {
+      pointId: { name: "Point", address: data.point.value, id: data.point.id },
       orderStatusId: data.orderStatus,
       cityId: data.city,
       carId: data.car,
