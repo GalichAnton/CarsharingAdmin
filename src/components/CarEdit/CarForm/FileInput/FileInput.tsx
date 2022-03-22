@@ -2,7 +2,7 @@ import React, { FC, useRef, MouseEvent } from "react";
 import classes from "./FileInput.module.scss";
 import Button from "../../../UI/Button/Button";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
-import { CarFormValues } from "../CarForm";
+import { CarFormValues } from "../../../../hooks/useCarInputs";
 interface IFileInputProps {
   name: "image";
   placeholder: string;
@@ -40,7 +40,7 @@ const FileInput: FC<IFileInputProps> = (props) => {
           type={type}
         />
         <Button
-          onClick={handleClick}
+          onClick={(e) => handleClick(e)}
           type="button"
           title="Обзор"
           className={classes.button}

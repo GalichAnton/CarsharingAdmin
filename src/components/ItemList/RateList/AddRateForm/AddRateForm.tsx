@@ -54,7 +54,7 @@ const AddRateForm = () => {
       />
       <Button
         type={"button"}
-        title="Apply"
+        title="Добавить"
         onClick={handleClick}
         className={cn(classes.button)}
       />

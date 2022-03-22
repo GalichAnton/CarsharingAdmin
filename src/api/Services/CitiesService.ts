@@ -5,6 +5,7 @@ import {
   ICitiesResponse,
   ICityResponse,
 } from "../../interfaces/CityInterfaces";
+import { IPointsResponse } from "../../interfaces/PointInterfaces";
 export default class CitiesService {
   static async getCities(): Promise<AxiosResponse<ICitiesResponse>> {
     return contentApi.get<ICitiesResponse>(ApiPaths.cities);
@@ -24,5 +25,13 @@ export default class CitiesService {
 
   static async postCity(city: string): Promise<AxiosResponse<ICityResponse>> {
     return contentApi.post<ICityResponse>(ApiPaths.cities, { name: city });
+  }
+
+  static async getCityPoints(
+    cityId: string
+  ): Promise<AxiosResponse<IPointsResponse>> {
+    return contentApi.get<IPointsResponse>(
+      `${ApiPaths.point}?cityId=${cityId}`
+    );
   }
 }

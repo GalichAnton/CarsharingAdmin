@@ -1,5 +1,5 @@
-import { useAppSelector } from "./redux/redux-hooks";
 import { ICar } from "../interfaces/CarInterface";
+import { IOption } from "../interfaces/OptionInterface";
 
 export interface CarFormValues {
   name: string;
@@ -8,7 +8,7 @@ export interface CarFormValues {
   priceMin: string;
   priceMax: string;
   description: string;
-  category: string;
+  category: IOption;
   image: FileList;
 }
 export type carInputsNames = keyof CarFormValues;
@@ -20,8 +20,8 @@ export interface carInput {
   type: string;
   defaultValue: string;
 }
-export const useInputs = () => {
-  const setInputValues = (car: ICar): carInput[] => {
+export const useCarInputs = () => {
+  const setCarInputValues = (car: ICar): carInput[] => {
     const inputValues: carInput[] = [
       {
         name: "name",
@@ -75,5 +75,5 @@ export const useInputs = () => {
     return inputValues;
   };
 
-  return setInputValues;
+  return setCarInputValues;
 };

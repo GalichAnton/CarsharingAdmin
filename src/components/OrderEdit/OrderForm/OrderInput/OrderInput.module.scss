@@ -1,0 +1,81 @@
+@import "../../../../styles/variables/variables";
+@import "../../../../styles/mixins/mixins";
+.inputContainer {
+  box-sizing: border-box;
+}
+
+.inputLabel {
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+  margin-bottom: 8.5px;
+  color: $main-dark-blue;
+}
+
+.input {
+  color: $main-black;
+  outline-color: $main-blue;
+  align-self: center;
+  font-weight: 300;
+  font-size: 11px;
+  line-height: 16px;
+  width: 100%;
+  [class*="-indicatorSeparator" ]{
+    display: none;
+  }
+
+  [class*="-control"] {
+    height: 30px !important;
+    box-sizing: border-box;
+    cursor: pointer;
+    outline: none;
+    box-shadow: none;
+    &:hover {
+      border-color: gray;
+    }
+  }
+  [class*="-option"] {
+    color: gray;
+    padding: 8px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 16px;
+
+    &:hover {
+      color: $main-blue;
+    }
+    &:active {
+      background-color: white;
+      opacity: 1;
+    }
+  }
+  [class*="-Input"] {
+    margin: 0;
+    padding: 0;
+  }
+  [class*="-IndicatorsContainer"]{
+    display: flex;
+    align-items: center;
+  }
+  [class*="-indicatorContainer"] {
+    padding: 4px;
+    @media screen and (min-width: 0px) and (max-width: 768px) {
+      padding: 4px
+    }
+  }
+
+  [class*="-ValueContainer"] {
+    @media screen  and (max-width: 767px) {
+      padding: 2px 3px;
+    }
+  }
+
+  [class*="-menu"] {
+
+  }
+}
+
+.inputError {
+  @include input-error;
+}

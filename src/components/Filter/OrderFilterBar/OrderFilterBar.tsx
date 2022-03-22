@@ -10,6 +10,7 @@ import { ICar } from "../../../interfaces/CarInterface";
 import { IOrderStatus } from "../../../interfaces/OrderInterface";
 import { useDispatch } from "react-redux";
 import { orderActions } from "../../../store/slices/OrderSlice";
+import { filterActions } from "../../../store/slices/FilterSlice";
 const OrderFilterBar = () => {
   const dispatch = useDispatch();
   const cities = useAppSelector((state) => state.city.cities.data);
@@ -43,6 +44,8 @@ const OrderFilterBar = () => {
         delete params[key];
       }
     });
+    dispatch(filterActions.setCurrentPage(1));
+    dispatch(filterActions.setFilter(params));
     dispatch(orderActions.ordersFetching(params));
   };
 
@@ -50,6 +53,7 @@ const OrderFilterBar = () => {
     setCity({} as ICity);
     setCar({} as ICar);
     setStatus({} as IOrderStatus);
+    dispatch(filterActions.removeFilter());
     dispatch(orderActions.ordersFetching({ page: 0, limit: 5 }));
   };
   return (
@@ -83,13 +87,13 @@ const OrderFilterBar = () => {
       <div className={classes.buttonContainer}>
         <Button
           type={"button"}
-          title="Reset"
+          title="Отмена"
           onClick={onReset}
           className={classes.buttonRed}
         />
         <Button
           type={"button"}
-          title="Apply"
+          title="Применить"
           onClick={clickHandler}
           className={cn(classes.button)}
         />

@@ -1,9 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ICity, ICitiesResponse } from "../../interfaces/CityInterfaces";
+import { IPoint, IPointsResponse } from "../../interfaces/PointInterfaces";
 
 export interface ICityState {
   status: "idle" | "loading" | "success" | "rejected";
   cities: { data: ICity[]; count: number };
+  points: IPoint[];
   selectedCity: ICity;
   error: any;
 }
@@ -11,6 +13,7 @@ export interface ICityState {
 const initialState: ICityState = {
   status: "idle",
   cities: { data: [], count: 0 },
+  points: [],
   selectedCity: {} as ICity,
   error: "",
 };
@@ -41,6 +44,14 @@ const citySlice = createSlice({
     },
     endDeleteCity(state) {
       state.status = "success";
+    },
+    // =======================
+    startGetPoints(state, action: PayloadAction<string>) {
+      state.status = "loading";
+    },
+    endGetPoints(state, action: PayloadAction<IPointsResponse>) {
+      state.status = "success";
+      state.points = action.payload.data;
     },
     // =======================
     setError(state, action: PayloadAction<any>) {

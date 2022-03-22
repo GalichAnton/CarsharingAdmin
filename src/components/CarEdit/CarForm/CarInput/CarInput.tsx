@@ -2,7 +2,7 @@ import React, { FC, InputHTMLAttributes } from "react";
 import classes from "./CarInput.module.scss";
 import cn from "classnames";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
-import { CarFormValues, carInputsNames } from "../../../../hooks/useInputs";
+import { CarFormValues, carInputsNames } from "../../../../hooks/useCarInputs";
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   name: carInputsNames;
   value?: string;

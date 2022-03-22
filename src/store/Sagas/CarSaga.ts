@@ -41,7 +41,7 @@ export function* putCar({
 }: ReturnType<typeof carActions.startPutCar>) {
   try {
     const { data } = yield call(CarService.putCar, payload);
-    yield put({ type: carActions.endGetCarById.type, payload: data });
+    yield put({ type: carActions.endPutCar.type, payload: data });
   } catch (e: any) {
     yield put({ type: carActions.setError.type, payload: e.message });
   }

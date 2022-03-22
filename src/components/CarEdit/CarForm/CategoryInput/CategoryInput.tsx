@@ -2,8 +2,8 @@ import React, { FC } from "react";
 import Select, { createFilter } from "react-select";
 import classes from "./CatergoryInput.module.scss";
 import { DropdownIndicator } from "../../../Filter/DropDown";
-import { IOption } from "../../../../interfaces/OptionInterface";
 import { FieldErrors } from "react-hook-form";
+import { IOption } from "../../../../interfaces/OptionInterface";
 
 interface ICategoryInputProps {
   placeholder: string;
@@ -30,7 +30,6 @@ const getOptionsByKey =
 const CategoryInput: FC<ICategoryInputProps> = (props) => {
   const { placeholder, name, items, optionKey, field, id, errors } = props;
   const options = items.map(getOptionsByKey(optionKey));
-
   return (
     <div className={classes.inputContainer}>
       <label className={classes.inputLabel} htmlFor={name}>

@@ -1,31 +1,36 @@
 export const usePostObject = () => {
-  const createObject = (dataType: string, data: any) => {
-    let object;
-    switch (dataType) {
-      case "carPostData":
-        object = {
-          priceMax: data.priceMax,
-          priceMin: data.priceMin,
-          name: data.name,
-          number: data.number,
-          colors: data.colors,
-          tank: data.tank,
-          thumbnail: data.image.length && {
-            size: data.image[0].size,
-            originalname: data.image[0].name,
-            mimetype: data.image[0].type,
-            path: data.path,
-          },
+  const createCarObject = (data: any) => {
+    const object = {
+      priceMax: data.priceMax,
+      priceMin: data.priceMin,
+      name: data.name,
+      number: data.number,
+      colors: data.colors,
+      tank: data.tank,
+      thumbnail: data.image.length && {
+        size: data.image[0].size,
+        originalname: data.image[0].name,
+        mimetype: data.image[0].type,
+        path: data.path,
+      },
 
-          description: data.description,
-          categoryId: data.category.id,
-        };
-        break;
-
-      default:
-        break;
-    }
+      description: data.description,
+      categoryId: data.category.id,
+    };
     return object;
   };
-  return createObject;
+  const createOrderObject = (data: any) => {
+    const object = {
+      orderStatusId: data.orderStatus,
+      cityId: data.city,
+      carId: data.car,
+      color: data.color.value,
+      rateId: data.rate,
+      isFullTank: data.tank.value === "Да",
+      isNeedChildChair: data.childChair === "Да",
+      isRightWheel: data.rightWheel === "Да",
+    };
+    return object;
+  };
+  return { createCarObject, createOrderObject };
 };

@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import classes from "./CarForm.module.scss";
-import { SubmitHandler, useForm, Controller } from "react-hook-form";
+import { SubmitHandler, useForm, Controller, get } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Button from "../../UI/Button/Button";
@@ -15,7 +15,7 @@ import { useAppSelector } from "../../../hooks/redux/redux-hooks";
 import { useConvertFile } from "../../../hooks/useConvertFile";
 import { usePostObject } from "../../../hooks/usePostObject";
 import { carActions } from "../../../store/slices/CarSlice";
-import { CarFormValues, carInput } from "../../../hooks/useInputs";
+import { CarFormValues, carInput } from "../../../hooks/useCarInputs";
 import { ICar } from "../../../interfaces/CarInterface";
 interface ICarFormProps {
   car: ICar;
@@ -28,7 +28,7 @@ const CarForm: FC<ICarFormProps> = ({ car, inputs }) => {
   const [colors, setColors] = useState<string[] | undefined>(car.colors);
   const categories = useAppSelector((state) => state.category.categories);
   const converter = useConvertFile();
-  const createObject = usePostObject();
+  const { createCarObject } = usePostObject();
   const {
     register,
     handleSubmit,
@@ -44,7 +44,7 @@ const CarForm: FC<ICarFormProps> = ({ car, inputs }) => {
 
   const onSubmit: SubmitHandler<CarFormValues> = async (data) => {
     const path = await converter(data.image[0]);
-    const newCar = createObject("carPostData", {
+    const newCar = createCarObject({
       ...data,
       colors: colors,
       path: path,
@@ -58,7 +58,9 @@ const CarForm: FC<ICarFormProps> = ({ car, inputs }) => {
     <section className={classes.carForm}>
       <div className={classes.formContainer}>
         <form onSubmit={handleSubmit(onSubmit)} className={classes.loginForm}>
-          <h3 className={classes.formHeader}>Добавить модель</h3>
+          <h3 className={classes.formHeader}>
+            {carId ? "Изменить модель" : "Добавить модель"}
+          </h3>
           <div className={classes.inputContainer}>
             {inputs.map((input) => (
               <CarInput
@@ -82,6 +84,15 @@ const CarForm: FC<ICarFormProps> = ({ car, inputs }) => {
             <Controller
               name={"category"}
               control={control}
+              defaultValue={
+                carId
+                  ? {
+                      id: car.categoryId.id,
+                      value: car.categoryId.name,
+                      label: car.categoryId.name,
+                    }
+                  : undefined
+              }
               render={({ field }) => (
                 <CategoryInput
                   errors={errors}

@@ -7,6 +7,7 @@ import classes from "../ItemList.module.scss";
 import { RootState } from "../../../store/store";
 import { useAppSelector } from "../../../hooks/redux/redux-hooks";
 import { orderActions } from "../../../store/slices/OrderSlice";
+import { filterActions } from "../../../store/slices/FilterSlice";
 const mapState = (state: RootState) => ({
   orders: state.order.orders,
   orderStatus: state.order.status,
@@ -15,14 +16,26 @@ const mapState = (state: RootState) => ({
 const OrderList = () => {
   const limit = 5;
   const dispatch = useDispatch();
-  const [currentPage, setCurrentPage] = useState(1);
+  const currentPage = useAppSelector((state) => state.filter.currentPage);
   const { orders, ordersCount, orderStatus } = useAppSelector(mapState);
+  const params = useAppSelector((state) => state.filter.params);
   const changePage = (page: number) => {
-    setCurrentPage(page);
+    dispatch(filterActions.setCurrentPage(page));
   };
   useEffect(() => {
-    dispatch(orderActions.ordersFetching({ page: currentPage, limit: limit }));
+    dispatch(
+      orderActions.ordersFetching({
+        ...params,
+        page: currentPage,
+        limit: limit,
+      })
+    );
   }, [currentPage]);
+  useEffect(() => {
+    return () => {
+      dispatch(filterActions.setCurrentPage(1));
+    };
+  }, []);
   return (
     <>
       {orderStatus === "success" ? (

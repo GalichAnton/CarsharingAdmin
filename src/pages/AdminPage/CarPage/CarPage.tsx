@@ -6,15 +6,17 @@ import { useParams } from "react-router-dom";
 import { useAppSelector } from "../../../hooks/redux/redux-hooks";
 import { useDispatch } from "react-redux";
 import { carActions } from "../../../store/slices/CarSlice";
-import { useInputs } from "../../../hooks/useInputs";
+import { useCarInputs } from "../../../hooks/useCarInputs";
 import Preloader from "../../../components/UI/Preloader/Preloader";
 const CarPage = () => {
   const { carId } = useParams();
   const dispatch = useDispatch();
-  const setInputs = useInputs();
+  const setInputs = useCarInputs();
   const car = useAppSelector((state) => state.car.selectedCar.car);
   const status = useAppSelector((state) => state.car.selectedCar.status);
+  console.log(car);
   const carInputs = setInputs(car);
+  console.log(carInputs);
   useEffect(() => {
     carId && dispatch(carActions.startGetCarById(carId));
   }, [carId]);

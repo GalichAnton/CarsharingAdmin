@@ -7,4 +7,5 @@ export enum ApiPaths {
   cities = "db/city",
   rate = "/db/rate",
   category = "/db/category",
+  point = "/db/point",
 }

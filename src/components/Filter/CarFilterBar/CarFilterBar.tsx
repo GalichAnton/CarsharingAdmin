@@ -8,6 +8,7 @@ import { IOption } from "../../../interfaces/OptionInterface";
 import { ICategory } from "../../../interfaces/CarInterface";
 import { useDispatch } from "react-redux";
 import { carActions } from "../../../store/slices/CarSlice";
+import { filterActions } from "../../../store/slices/FilterSlice";
 const CarFilterBar = () => {
   const dispatch = useDispatch();
   const categories = useAppSelector((state) => state.category.categories);
@@ -30,10 +31,12 @@ const CarFilterBar = () => {
         delete params[key];
       }
     });
+    dispatch(filterActions.setCurrentPage(1));
     dispatch(carActions.startGetCars(params));
   };
   const onReset = () => {
     setCategory({} as ICategory);
+    dispatch(filterActions.setCurrentPage(1));
     dispatch(carActions.startGetCars({ page: 0 }));
   };
   return (
@@ -51,13 +54,13 @@ const CarFilterBar = () => {
       <div className={classes.buttonContainer}>
         <Button
           type={"button"}
-          title="Reset"
+          title="Отмена"
           onClick={onReset}
           className={classes.buttonRed}
         />
         <Button
           type={"button"}
-          title="Apply"
+          title="Применить"
           onClick={clickHandler}
           className={cn(classes.button)}
         />

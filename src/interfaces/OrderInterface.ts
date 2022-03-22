@@ -31,7 +31,7 @@ export interface IOrder {
   id: string;
 }
 
-export interface IOrderResponse {
+export interface IOrdersResponse {
   data: IOrder[];
   count: number;
 }
@@ -43,3 +43,12 @@ export interface IOrderStatus {
 export interface IOrderStatusResponse {
   data: IOrderStatus[];
 }
+
+export interface IOrderResponse {
+  data: IOrder;
+}
+
+export type NewOrder = Omit<
+  IOrder,
+  "id" | "dateFrom" | "dateTo" | "price" | "pointId"
+>;

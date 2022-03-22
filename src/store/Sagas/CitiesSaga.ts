@@ -1,11 +1,9 @@
 import { call, takeEvery, put, all, fork } from "redux-saga/effects";
-import {
-  ICitiesResponse,
-  ICityResponse,
-} from "../../interfaces/CityInterfaces";
+import { ICitiesResponse } from "../../interfaces/CityInterfaces";
 import CitiesService from "../../api/Services/CitiesService";
 import { cityActions } from "../slices/CitySlice";
 import { carActions } from "../slices/CarSlice";
+import { IPointsResponse } from "../../interfaces/PointInterfaces";
 
 export function* setCities() {
   try {
@@ -39,6 +37,20 @@ export function* deleteCity({
   }
 }
 
+export function* getPoints({
+  payload,
+}: ReturnType<typeof cityActions.startGetPoints>) {
+  try {
+    const { data }: IPointsResponse = yield call(
+      CitiesService.getCityPoints,
+      payload
+    );
+    yield put({ type: cityActions.endGetPoints.type, payload: data });
+  } catch (e: any) {
+    yield put({ type: cityActions.setError.type, payload: e });
+  }
+}
+
 export function* getCitiesSagaWatcher() {
   yield takeEvery(cityActions.startGetCities.type, setCities);
 }
@@ -51,10 +63,15 @@ export function* deleteCitySagaWatcher() {
   yield takeEvery(cityActions.startDeleteCity.type, deleteCity);
 }
 
+export function* getCityPointsSagaWatcher() {
+  yield takeEvery(cityActions.startGetPoints.type, getPoints);
+}
+
 export function* citySagaWatcher() {
   yield all([
     fork(getCitiesSagaWatcher),
     fork(postCitiesSagaWatcher),
     fork(deleteCitySagaWatcher),
+    fork(getCityPointsSagaWatcher),
   ]);
 }
