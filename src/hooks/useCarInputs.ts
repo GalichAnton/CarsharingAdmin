@@ -1,5 +1,6 @@
 import { ICar } from "../interfaces/CarInterface";
 import { IOption } from "../interfaces/OptionInterface";
+import { useCallback } from "react";
 
 export interface CarFormValues {
   name: string;
@@ -21,7 +22,7 @@ export interface carInput {
   defaultValue: string;
 }
 export const useCarInputs = () => {
-  const setCarInputValues = (car: ICar): carInput[] => {
+  const setCarInputValues = useCallback((car: ICar): carInput[] => {
     const inputValues: carInput[] = [
       {
         name: "name",
@@ -73,7 +74,7 @@ export const useCarInputs = () => {
       },
     ];
     return inputValues;
-  };
+  }, []);
 
   return setCarInputValues;
 };

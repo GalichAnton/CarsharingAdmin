@@ -1,5 +1,7 @@
+import { useCallback } from "react";
+
 export const usePostObject = () => {
-  const createCarObject = (data: any) => {
+  const createCarObject = useCallback((data: any) => {
     const object = {
       priceMax: data.priceMax,
       priceMin: data.priceMin,
@@ -18,8 +20,9 @@ export const usePostObject = () => {
       categoryId: data.category.id,
     };
     return object;
-  };
-  const createOrderObject = (data: any) => {
+  }, []);
+
+  const createOrderObject = useCallback((data: any) => {
     const object = {
       pointId: { name: "Point", address: data.point.value, id: data.point.id },
       orderStatusId: data.orderStatus,
@@ -32,6 +35,7 @@ export const usePostObject = () => {
       isRightWheel: data.rightWheel === "Да",
     };
     return object;
-  };
+  }, []);
+
   return { createCarObject, createOrderObject };
 };

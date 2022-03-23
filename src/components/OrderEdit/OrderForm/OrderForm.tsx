@@ -46,6 +46,7 @@ const OrderForm: FC<IOrderFormProps> = ({ order, inputs }) => {
           <div className={classes.inputContainer}>
             {inputs.map((input) => (
               <Controller
+                key={input.id}
                 name={input.name}
                 control={control}
                 defaultValue={input.defaultValue}
