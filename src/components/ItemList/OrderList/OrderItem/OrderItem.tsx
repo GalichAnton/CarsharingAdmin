@@ -53,7 +53,7 @@ const OrderItem: FC<IOrderItemProps> = ({ order }) => {
         <div className={classes.price}>
           {order.price ? order.price : "Не известно"} ₽
         </div>
-        <ButtonsBox />
+        <ButtonsBox orderId={order.id} />
       </div>
     </div>
   );

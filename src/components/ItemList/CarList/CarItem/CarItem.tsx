@@ -3,10 +3,22 @@ import classes from "./CarItem.module.scss";
 import { ICar } from "../../../../interfaces/CarInterface";
 import Button from "../../../UI/Button/Button";
 import { ChangeButton } from "../../OrderList/OrderItem/ButtonBox/images/ChangeButton";
+import { useNavigate } from "react-router-dom";
+import { CancelButton } from "../../OrderList/OrderItem/ButtonBox/images/CancelButton";
+import { useDispatch } from "react-redux";
+import { carActions } from "../../../../store/slices/CarSlice";
 interface IOrderItemProps {
   car: ICar;
 }
 const CarItem: FC<IOrderItemProps> = ({ car }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/admin/car/${car.id}`);
+  };
+  const handleDelete = (carId: string) => {
+    dispatch(carActions.startDeleteCar(carId));
+  };
   return (
     <div className={classes.car}>
       <div className={classes.info}>
@@ -57,9 +69,24 @@ const CarItem: FC<IOrderItemProps> = ({ car }) => {
             </span>
           </li>
         </ul>
-        <Button type={"button"} className={classes.button} title={"Изменить"}>
-          <div className={classes.buttonImage}>{ChangeButton}</div>
-        </Button>
+        <div className={classes.buttonBox}>
+          <Button
+            onClick={handleClick}
+            type={"button"}
+            className={classes.button}
+            title={"Изменить"}
+          >
+            <div className={classes.buttonImage}>{ChangeButton}</div>
+          </Button>
+          <Button
+            onClick={() => handleDelete(car.id)}
+            type={"button"}
+            className={classes.button}
+            title={"Удалить"}
+          >
+            <div className={classes.buttonImage}>{CancelButton}</div>
+          </Button>
+        </div>
       </div>
     </div>
   );

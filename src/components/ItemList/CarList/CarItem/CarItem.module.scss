@@ -135,3 +135,18 @@
   width: min-content;
   height: min-content;
 }
+
+.buttonBox{
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+  @media screen and (max-width: 1200px) {
+    width: 25%;
+  }
+  @media screen and (max-width: 1024px) {
+    width: 30%;
+  }
+  @media screen and (max-width: 768px) {
+    width: 40%;
+  }
+}

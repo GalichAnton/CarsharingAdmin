@@ -1,0 +1,58 @@
+@import "../../../../styles/variables/variables";
+@import "../../../../styles/mixins/mixins";
+.colorInput {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.label {
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+  margin-bottom: 8.5px;
+  color: $main-dark-blue;
+}
+
+.input {
+  font-size: 11px;
+  line-height: 13px;
+  border: 0.5px solid #becad6;
+  box-sizing: border-box;
+  border-radius: 3px;
+  padding: 8px 11px 8.5px;
+  outline-style: none;
+  color: $main-dark-blue;
+  width: 100%;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $main-blue;
+  cursor: pointer;
+  padding: 0 15px;
+  border-radius: 3px;
+  margin: 0;
+  color: white;
+  border: none;
+  font-size: 12px;
+}
+
+.image {
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  margin: auto;
+  align-self: center;
+}

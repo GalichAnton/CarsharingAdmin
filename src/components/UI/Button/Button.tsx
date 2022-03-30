@@ -3,7 +3,7 @@ import cn from "classnames";
 import classes from "./Button.module.scss";
 interface IButtonProps {
   title: string;
-  onClick?: (e: MouseEvent) => void;
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
   className: string;
   background?: string;
   disabled?: boolean;

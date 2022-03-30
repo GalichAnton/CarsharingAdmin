@@ -25,7 +25,7 @@ export const navItems: INavItem[] = [
   },
   {
     title: "Добавить модель",
-    route: "/",
+    route: LocalPaths.car,
     image: edit,
   },
 ];
