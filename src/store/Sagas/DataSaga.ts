@@ -1,25 +1,25 @@
-import { takeEvery, put, call } from "redux-saga/effects";
-import { ICarResponse } from "../../interfaces/CarInterface";
-import CarService from "../../api/Services/CarService";
-import { ICityResponse } from "../../interfaces/CityInterfaces";
-import CitiesService from "../../api/Services/CitiesService";
+import { takeEvery, put, call, all } from "redux-saga/effects";
 import { dataActions } from "../slices/DataSlice";
-import { IData } from "../../interfaces/DataInterface";
-import CategoryService from "../../api/Services/CategoryService";
-import RateService from "../../api/Services/RateService";
+import { setCars } from "./CarSaga";
+import { setCities } from "./CitiesSaga";
+import { setCategories } from "./CategorySaga";
+import { setRates } from "./RatesSaga";
+import { setOrderStatuses } from "./OrderSaga";
+import { carActions } from "../slices/CarSlice";
+
 export function* setData() {
   try {
-    const cars: ICarResponse = yield call(CarService.getCars);
-    const cities: ICityResponse = yield call(CitiesService.getCities);
-    const category: ICityResponse = yield call(CategoryService.getCategory);
-    const rates: ICityResponse = yield call(RateService.getRates);
-    const data: IData = yield {
-      cars: cars.data,
-      cities: cities.data,
-      rates: rates.data,
-      category: category.data,
-    };
-    yield put({ type: dataActions.dataFetched.type, payload: data });
+    yield all([
+      call(setCars, {
+        payload: { page: 0 },
+        type: carActions.startGetCars.type,
+      }),
+      call(setCities),
+      call(setCategories),
+      call(setOrderStatuses),
+      call(setRates),
+    ]);
+    yield put({ type: dataActions.dataFetched.type });
   } catch (e: any) {
     yield put({ type: dataActions.setError.type, payload: e });
   }

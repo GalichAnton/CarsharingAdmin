@@ -1,0 +1,72 @@
+@import "../../../../styles/variables/variables";
+@import "../../../../styles/mixins/mixins";
+
+.container {
+  margin-bottom: 10px;
+}
+.inputContainer{
+  display: flex;
+  width: 100%;
+}
+.inputLabel {
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+  margin-bottom: 8.5px;
+  color: $main-dark-blue;
+}
+
+.input {
+  color: $main-dark-blue;
+  align-self: center;
+  font-weight: 300;
+  font-size: 11px;
+  line-height: 16px;
+  width: 100%;
+  border: 0.5px solid #becad6;
+  border-radius: 4px;
+  padding: 8px 11px 8.5px;
+  outline-style: none;
+}
+
+.inputError {
+  @extend .input;
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: #c4183c;
+}
+.errorMessage {
+  @include input-error;
+}
+
+.input[type="file"] {
+  cursor: pointer;
+}
+
+.input[type="file"]::-webkit-file-upload-button {
+  display: none;
+}
+
+.input[type="file"]::-ms-browse {
+  display: none;
+}
+
+.input[type="file"]::file-selector-button  {
+  display: none;
+  visibility: hidden;
+}
+
+
+.button {
+  border-radius: 4px;
+  width: 80px;
+  right: 0;
+  padding: 8px 4px;
+  background: $main-blue;
+  border: 0.5px solid #becad6;
+  box-sizing: border-box;
+  cursor: pointer;
+  color: white;
+  font-size: 12px;
+  line-height: 14px;
+}

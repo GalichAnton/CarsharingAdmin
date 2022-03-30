@@ -6,15 +6,15 @@ import Pagination from "../../Pagination/Pagination";
 import classes from "../ItemList.module.scss";
 import CityItem from "./CityItem/CityItem";
 const mapState = (state: RootState) => ({
-  cities: state.data.cities.data,
-  citiesCount: state.data.cities.count,
-  dataStatus: state.data.status,
+  cities: state.city.cities.data,
+  citiesCount: state.city.cities.count,
+  citiesStatus: state.city.status,
 });
 
 const CitiesList = () => {
   const limit = 5;
   const [currentPage, setCurrentPage] = useState(1);
-  const { citiesCount, cities, dataStatus } = useAppSelector(mapState);
+  const { citiesCount, cities, citiesStatus } = useAppSelector(mapState);
   const showedCities = cities.slice(
     (currentPage - 1) * limit,
     limit * currentPage
@@ -25,7 +25,7 @@ const CitiesList = () => {
 
   return (
     <>
-      {dataStatus === "success" ? (
+      {citiesStatus === "success" ? (
         showedCities.map((city, i) => <CityItem key={i} city={city} />)
       ) : (
         <Preloader customText={"Подождите..."} />

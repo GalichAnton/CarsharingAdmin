@@ -4,8 +4,8 @@ import classes from "./Filter.module.scss";
 import { IOption } from "../../interfaces/OptionInterface";
 import { DropdownIndicator } from "./DropDown";
 interface IFilterProps {
-  onChange: () => void;
-  valueState: any;
+  onChange?: (item: IOption) => void;
+  valueState: string;
   placeholder: string;
   name: string;
   items: any;
@@ -35,10 +35,9 @@ const Filter: FC<IFilterProps> = (props) => {
         className={classes.input}
         classNamePrefix={classes.input}
         name={name}
-        onChange={onChange}
         value={
           valueState
-            ? options.filter((option: any) => option.value === valueState)
+            ? options.filter((option: IOption) => option.value === valueState)
             : null
         }
         options={options}
@@ -46,6 +45,7 @@ const Filter: FC<IFilterProps> = (props) => {
         placeholder={placeholder}
         noOptionsMessage={() => "Не найдено"}
         filterOption={createFilter(filterConfig)}
+        onChange={onChange}
       />
     </div>
   );

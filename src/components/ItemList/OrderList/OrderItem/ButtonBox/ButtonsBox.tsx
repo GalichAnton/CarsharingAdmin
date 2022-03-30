@@ -1,10 +1,18 @@
-import React from "react";
+import React, { FC } from "react";
 import Button from "../../../../UI/Button/Button";
 import classes from "./ButonsBox.module.scss";
 import { AcceptButton } from "./images/AcceptButton";
 import { CancelButton } from "./images/CancelButton";
 import { ChangeButton } from "./images/ChangeButton";
-const ButtonsBox = () => {
+import { useNavigate } from "react-router-dom";
+interface IButtonBoxProps {
+  orderId: string;
+}
+const ButtonsBox: FC<IButtonBoxProps> = ({ orderId }) => {
+  const navigate = useNavigate();
+  const onClick = () => {
+    navigate(`/admin/order/${orderId}`);
+  };
   return (
     <div className={classes.buttonBox}>
       <Button
@@ -23,7 +31,12 @@ const ButtonsBox = () => {
       >
         <div className={classes.orderButtonImage}>{CancelButton}</div>
       </Button>
-      <Button type={"button"} className={classes.button} title={"Изменить"}>
+      <Button
+        onClick={onClick}
+        type={"button"}
+        className={classes.button}
+        title={"Изменить"}
+      >
         <div className={classes.orderButtonImage}>{ChangeButton}</div>
       </Button>
     </div>

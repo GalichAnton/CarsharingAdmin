@@ -1,0 +1,71 @@
+@import "../../../styles/variables/variables";
+@import "../../../styles/mixins/mixins";
+.orderForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  padding: 25px 0;
+  @media screen and (max-width: 768px) {
+    margin: 0 auto;
+    width: 90%;
+  }
+}
+
+.formHeader{
+  color: $main-dark-blue;
+}
+.formContainer{
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 1px 0 rgba(90, 97, 105, 0.11),
+  0 2px 4px rgba(90, 97, 105, 0.12), 0 5px 5px rgba(90, 97, 105, 0.06),
+  0 3.5px 35px rgba(90, 97, 105, 0.1);
+  border-radius: 9px;
+  padding: 15px;
+}
+
+.inputContainer{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap:15px;
+  @media screen and (max-width: 768px) {
+    gap:5px;
+  }
+  @media screen and (max-width: 550px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.addButton {
+  @include hover-opacity;
+  box-sizing: border-box;
+  color: white;
+  font-size: 11px;
+  line-height: 13px;
+  width: 95px;
+  background: $main-blue;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 9px 15px;
+
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    width: 75px;
+  }
+  @media screen and (min-width: 0) and (max-width: 767px) {
+    width: 55px;
+    padding: 5px;
+  }
+}
+
+.backButton {
+  @extend .addButton;
+  background: #C4183C;
+}

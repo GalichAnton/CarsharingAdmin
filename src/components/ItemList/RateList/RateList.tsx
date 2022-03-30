@@ -6,15 +6,14 @@ import Preloader from "../../UI/Preloader/Preloader";
 import Pagination from "../../Pagination/Pagination";
 import classes from "../ItemList.module.scss";
 const mapState = (state: RootState) => ({
-  rates: state.data.rates.data,
-  ratesCount: state.data.rates.count,
-  dataStatus: state.data.status,
+  rates: state.rate.rates.data,
+  ratesCount: state.rate.rates.count,
+  rateStatus: state.rate.status,
 });
 const RateList = () => {
   const limit = 5;
   const [currentPage, setCurrentPage] = useState(1);
-  const { ratesCount, rates, dataStatus } = useAppSelector(mapState);
-  console.log(rates);
+  const { ratesCount, rates, rateStatus } = useAppSelector(mapState);
   const showedRates = rates.slice(
     (currentPage - 1) * limit,
     limit * currentPage
@@ -25,7 +24,7 @@ const RateList = () => {
 
   return (
     <>
-      {dataStatus === "success" ? (
+      {rateStatus === "success" ? (
         showedRates.map((rate, i) => <RateItem key={i} rate={rate} />)
       ) : (
         <Preloader customText={"Подождите..."} />

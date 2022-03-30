@@ -1,4 +1,4 @@
-interface IThumbnail {
+export interface IThumbnail {
   path: string;
   size: number;
   originalname: string;
@@ -23,7 +23,15 @@ export interface ICar {
   colors: string[];
   id: string;
 }
-
-export interface ICarResponse {
+export type NewCarType = Omit<ICar, "updatedAt" | "createdAt" | "id">;
+export interface ICarsResponse {
   data: ICar[];
+  count: number;
+}
+export interface ICarResponse {
+  data: ICar;
+}
+
+export interface ICategoryResponse {
+  data: ICategory[];
 }
